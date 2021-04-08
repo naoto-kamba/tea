@@ -1,11 +1,12 @@
 import { Layout } from '../components/layout/Layout'
+import { InputAmounts } from '../components/InputAmounts'
 
-const TeaCalc = () => {
+const Index = () => {
   return (
     <Layout>
-      <div>TeaCalcComponent</div>
+      <InputAmounts />
     </Layout>
   )
 }
 
-export default TeaCalc
+export default Index
