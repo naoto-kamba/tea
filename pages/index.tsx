@@ -1,3 +1,11 @@
-const IndexPage = () => <div>Hello, World!</div>
+import { Layout } from '../components/layout/Layout'
 
-export default IndexPage
+const TeaCalc = () => {
+  return (
+    <Layout>
+      <div>TeaCalcComponent</div>
+    </Layout>
+  )
+}
+
+export default TeaCalc
