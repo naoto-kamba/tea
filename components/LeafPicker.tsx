@@ -1,22 +1,32 @@
 type LeafPickerProps = {
   onClick: (value: number) => void
 }
+
+const options = [
+  {
+    name: '2.75g',
+    value: 2.75,
+  },
+  {
+    name: '3.00g',
+    value: 3,
+  },
+]
+
 export const LeafPicker = ({ onClick }: LeafPickerProps) => {
-  const onClickA = () => {
-    onClick(2.75)
-  }
-  const onClickB = () => {
-    onClick(3.25)
-  }
   return (
     <div>
       推奨茶葉量(g)
-      <div>
-        <button onClick={onClickA}>2.5g~3.0g</button>
-      </div>
-      <div>
-        <button onClick={onClickB}>3.0g~3.5g</button>
-      </div>
+      {options.map((o) => {
+        const onClickL = () => {
+          onClick(o.value)
+        }
+        return (
+          <div>
+            <button onClick={onClickL}>{o.name}</button>
+          </div>
+        )
+      })}
     </div>
   )
 }

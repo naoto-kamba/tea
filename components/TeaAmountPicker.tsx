@@ -1,22 +1,32 @@
 type TeaAmountPickerProps = {
   onClick: (value: number) => void
 }
+
+const options = [
+  {
+    name: '300ml',
+    value: 300,
+  },
+  {
+    name: '600ml',
+    value: 600,
+  },
+]
+
 export const TeaAmountPicker = ({ onClick }: TeaAmountPickerProps) => {
-  const onClickA = () => {
-    onClick(300)
-  }
-  const onClickB = () => {
-    onClick(600)
-  }
   return (
     <div>
       淹れたい分量(ml)
-      <div>
-        <button onClick={onClickA}>300ml</button>
-      </div>
-      <div>
-        <button onClick={onClickB}>600ml</button>
-      </div>
+      {options.map((o) => {
+        const onClickL = () => {
+          onClick(o.value)
+        }
+        return (
+          <div>
+            <button onClick={onClickL}>{o.name}</button>
+          </div>
+        )
+      })}
     </div>
   )
 }
