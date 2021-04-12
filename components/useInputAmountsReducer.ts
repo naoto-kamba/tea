@@ -4,14 +4,16 @@ type InputAmountsState = {
   leaf: number
   hotWater: number
   tea: number
-  current: 'leaf' | 'hotWater' | 'tea'
+  current: 'tempKind' | 'leaf' | 'hotWater' | 'tea'
+  tempKind: 'ice' | 'hot'
 }
 
 const initialInputAmountsState: InputAmountsState = {
   leaf: 2.75,
   hotWater: 150,
   tea: 300,
-  current: 'leaf',
+  current: 'tempKind',
+  tempKind: 'hot',
 }
 type ChangePayloadValiation = {
   [K in keyof InputAmountsState]: { name: K; value: InputAmountsState[K] }

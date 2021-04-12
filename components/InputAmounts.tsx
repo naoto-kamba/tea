@@ -3,11 +3,28 @@ import React from 'react'
 import { HotWaterPicker } from './HotWaterPicker'
 import { LeafPicker } from './LeafPicker'
 import { TeaAmountPicker } from './TeaAmountPicker'
+import { TempKind, TempKindPicker } from './TempKindPicker'
 import { useInputAmountsReducer } from './useInputAmountsReducer'
 
 export const InputAmounts = () => {
   const router = useRouter()
   const [state, dispatch] = useInputAmountsReducer()
+  const onChangeTempKind = (value: TempKind) => {
+    dispatch({
+      type: 'change',
+      payload: {
+        name: 'tempKind',
+        value: value,
+      },
+    })
+    dispatch({
+      type: 'change',
+      payload: {
+        name: 'current',
+        value: 'leaf',
+      },
+    })
+  }
   const onChangeLeaf = (value: number) => {
     dispatch({
       type: 'change',
@@ -49,12 +66,15 @@ export const InputAmounts = () => {
       },
     })
     router.push(
-      `/calc-result?leaf=${state.leaf}&hotWater=${state.hotWater}&tea=${state.tea}`
+      `/calc-result?tempKind=${state.tempKind}&leaf=${state.leaf}&hotWater=${state.hotWater}&tea=${value}`
     )
   }
 
   return (
     <div>
+      {state.current === 'tempKind' && (
+        <TempKindPicker onClick={onChangeTempKind} />
+      )}
       {state.current === 'leaf' && <LeafPicker onClick={onChangeLeaf} />}
       {state.current === 'hotWater' && (
         <HotWaterPicker onClick={onChangeHotWater} />
